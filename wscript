@@ -198,8 +198,8 @@ def configure(ctx):
         ctx.env['cshlib_PATTERN'] = 'lib%s.dll'
 
     if target_platform == 'darwin' and ctx.options.enable_fat:
-        ctx.env.CFLAGS += ['-arch', 'i386', '-arch', 'x86_64']
-        ctx.env.LINKFLAGS += ['-arch', 'i386', '-arch', 'x86_64']
+        ctx.env.CFLAGS += ['-arch', 'x86_64']
+        ctx.env.LINKFLAGS += ['-arch', 'x86_64']
         MINSDKVER="10.4"
         ctx.env.CFLAGS += [ '-mmacosx-version-min=' + MINSDKVER ]
         ctx.env.LINKFLAGS += [ '-mmacosx-version-min=' + MINSDKVER ]
@@ -244,9 +244,7 @@ def configure(ctx):
             DEVROOT = "/Applications/Xcode.app/Contents"
             DEVROOT += "/Developer/Platforms/iPhoneSimulator.platform/Developer"
             SDKROOT = "%(DEVROOT)s/SDKs/iPhoneSimulator.sdk" % locals()
-            ctx.env.CFLAGS += [ '-arch', 'i386' ]
             ctx.env.CFLAGS += [ '-arch', 'x86_64' ]
-            ctx.env.LINKFLAGS += ['-arch', 'i386']
             ctx.env.LINKFLAGS += ['-arch', 'x86_64']
             ctx.env.CFLAGS += [ '-mios-simulator-version-min=' + MINSDKVER ]
             ctx.env.LINKFLAGS += [ '-mios-simulator-version-min=' + MINSDKVER ]
